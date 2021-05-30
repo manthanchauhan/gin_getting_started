@@ -68,7 +68,7 @@ func getArticleById(c *gin.Context) {
 	}
 
 	if id == 0 {
-		c.AbortWithError(400, errors.New("invalid article id"))
+		err = c.AbortWithError(400, errors.New("invalid article id"))
 		return
 	}
 
