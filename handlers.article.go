@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	dbModule "github.com/manthanchauhan/gin_getting_started/db"
 	"github.com/manthanchauhan/gin_getting_started/models"
-	"gorm.io/gorm"
 	"net/http"
 	"strconv"
 )
@@ -38,7 +38,7 @@ func createArticle(c *gin.Context) {
 		return
 	}
 
-	db := c.MustGet("DB").(*gorm.DB)
+	db := dbModule.DBInstance(c)
 	db.Create(&article_)
 
 	c.JSON(201, article_)
