@@ -10,7 +10,7 @@ type ArticleGetController struct {
 	DB      *gorm.DB
 }
 
-func (contr ArticleGetController) getArticle() models.Article {
+func (contr ArticleGetController) GetArticle() models.Article {
 	var article models.Article
 	contr.DB.Where(contr.Filters).Last(&article)
 
