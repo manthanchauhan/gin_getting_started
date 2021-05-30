@@ -1,6 +1,7 @@
 package db
 
 import (
+	"github.com/manthanchauhan/gin_getting_started/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -13,6 +14,8 @@ func Connect() *gorm.DB {
 	if err != nil {
 		log.Fatalf("Error connection to DB, %v", err)
 	}
+
+	db.AutoMigrate(&models.Article{})
 
 	return db
 }

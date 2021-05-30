@@ -26,3 +26,13 @@ func showArticle(c *gin.Context) {
 
 	c.JSON(http.StatusOK, *article_)
 }
+
+//func createArticle(c *gin.Context) {
+//	article_ := models.Article{}
+//	err := c.Bind(&article_)
+//
+//	if err != nil {
+//		c.JSON(400, gin.H{"error": err.Error()})
+//		return
+//	}
+//}
