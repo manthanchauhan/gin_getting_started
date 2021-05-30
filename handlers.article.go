@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/manthanchauhan/gin_getting_started/models"
+	"gorm.io/gorm"
 	"net/http"
 	"strconv"
 )
@@ -27,12 +29,17 @@ func showArticle(c *gin.Context) {
 	c.JSON(http.StatusOK, *article_)
 }
 
-//func createArticle(c *gin.Context) {
-//	article_ := models.Article{}
-//	err := c.Bind(&article_)
-//
-//	if err != nil {
-//		c.JSON(400, gin.H{"error": err.Error()})
-//		return
-//	}
-//}
+func createArticle(c *gin.Context) {
+	article_ := models.Article{}
+	err := c.Bind(&article_)
+
+	if err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
+
+	db := c.MustGet("DB").(*gorm.DB)
+	db.Create(&article_)
+
+	c.JSON(201, article_)
+}

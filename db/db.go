@@ -1,6 +1,7 @@
 package db
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/manthanchauhan/gin_getting_started/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -18,4 +19,8 @@ func Connect() *gorm.DB {
 	db.AutoMigrate(&models.Article{})
 
 	return db
+}
+
+func DBInstance(c *gin.Context) *gorm.DB {
+	return c.MustGet("DB").(*gorm.DB)
 }
