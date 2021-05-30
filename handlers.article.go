@@ -46,7 +46,7 @@ func createArticle(c *gin.Context) {
 func listAllArticles(c *gin.Context) {
 	db := dbModule.DBInstance(c)
 
-	result := controllers.ListArticles(db)
+	articles := controllers.ListArticles(db)
 
-	c.JSON(200, result)
+	c.JSON(200, articles)
 }

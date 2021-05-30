@@ -5,9 +5,9 @@ import (
 	"gorm.io/gorm"
 )
 
-func ListArticles(db *gorm.DB) {
+func ListArticles(db *gorm.DB) []models.Article {
 	var articles []models.Article
 
-	result := db.Find(&articles)
-	println(result)
+	db.Find(&articles)
+	return articles
 }
