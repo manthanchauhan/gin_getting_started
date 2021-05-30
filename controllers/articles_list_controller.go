@@ -5,7 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func listArticles(db *gorm.DB) {
+func ListArticles(db *gorm.DB) {
 	var articles []models.Article
 
 	result := db.Find(&articles)
