@@ -8,6 +8,7 @@ import (
 var router *gin.Engine
 
 func main() {
+	database := db.Connect()
 	router = gin.Default()
 
 	initializeRouter()
