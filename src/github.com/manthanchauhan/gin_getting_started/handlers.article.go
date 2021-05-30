@@ -41,8 +41,13 @@ func createArticle(c *gin.Context) {
 
 	db := dbModule.DBInstance(c)
 
-	contr := controllers.ArticleCreateContr{NewArticle: article_, DB: db}
-	contr.CreateArticle()
+	contr := controllers.ArticleCreateContr{NewArticle: &article_, DB: db}
+	_, err = contr.CreateArticle()
+
+	if err != nil {
+		c.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
 
 	c.JSON(201, article_)
 }

@@ -8,10 +8,12 @@ import (
 
 type ArticleCreateContr struct {
 	DB         *gorm.DB
-	NewArticle models.Article
+	NewArticle *models.Article
 }
 
-func (contr ArticleCreateContr) CreateArticle() {
+func (contr ArticleCreateContr) CreateArticle() (bool, error) {
 	dbMgr := db_managers.ArticleDBManager{DB: contr.DB}
-	dbMgr.CreateArticle(contr.NewArticle)
+	success, err := dbMgr.CreateArticle(contr.NewArticle)
+
+	return success, err
 }

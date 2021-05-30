@@ -9,6 +9,12 @@ type ArticleDBManager struct {
 	DB *gorm.DB
 }
 
-func (dbMgr ArticleDBManager) CreateArticle(article models.Article) {
-	dbMgr.DB.Create(&article)
+func (dbMgr ArticleDBManager) CreateArticle(article *models.Article) (bool, error) {
+	result := dbMgr.DB.Create(article)
+
+	if result.Error != nil {
+		return false, result.Error
+	}
+
+	return true, nil
 }
