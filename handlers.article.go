@@ -43,3 +43,6 @@ func createArticle(c *gin.Context) {
 
 	c.JSON(201, article_)
 }
+
+func listAllArticles(c *gin.Context) {
+}
