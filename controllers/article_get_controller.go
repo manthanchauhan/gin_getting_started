@@ -6,13 +6,13 @@ import (
 )
 
 type ArticleGetController struct {
-	filters map[string]interface{}
-	db      *gorm.DB
+	Filters map[string]interface{}
+	DB      *gorm.DB
 }
 
 func (contr ArticleGetController) getArticle() models.Article {
 	var article models.Article
-	contr.db.Where(contr.filters).Last(&article)
+	contr.DB.Where(contr.Filters).Last(&article)
 
 	return article
 }
