@@ -9,7 +9,7 @@ import (
 )
 
 func Connect() *gorm.DB {
-	dbURL := "ovunque:qazxc1234@tcp(127.0.0.1:3306)/gin_getting_started"
+	dbURL := "ovunque:qazxc1234@tcp(127.0.0.1:3306)/gin_getting_started?parseTime=true"
 	db, err := gorm.Open(mysql.Open(dbURL))
 
 	if err != nil {
